@@ -28,10 +28,10 @@ export const searchRepos = (term: string) => {
           payload: names
       });
     } catch (err) {
-      dispatch({
-        type: ActionType.SEARCH_REPO_ERROR,
-        payload: err.message,
-      });
+        dispatch({
+            type: ActionType.SEARCH_REPO_ERROR,
+            payload: err.message,
+        });
     }
   };
 };
