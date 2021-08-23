@@ -1,4 +1,5 @@
-import {SEARCH_REPO, SEARCH_REPO_ERROR, SEARCH_REPO_SUCCESS} from "../actionTypes";
+import { ActionType } from "../action-types";
+import { Action } from "../actions";
 
 interface ReposState {
   loading: boolean;
@@ -6,35 +7,13 @@ interface ReposState {
   data: string[];
 }
 
-// interface Action {
-//     type: string;
-//     payload?: any;
-// }
-
-interface SearchAction {
-  type: "search_repos";
-}
-
-interface SearchActionSuccess {
-  type: "search_repos_success";
-  payload: string[];
-}
-
-interface SearchActionError {
-  type: "search_repos_error";
-  payload: string;
-}
-
-const reducer = (
-  state: ReposState,
-  action: SearchAction | SearchActionSuccess | SearchActionError
-): ReposState => {
+const reducer = (state: ReposState, action: Action): ReposState => {
   switch (action.type) {
-    case SEARCH_REPO:
+    case ActionType.SEARCH_REPO:
       return { loading: true, error: null, data: [] };
-    case SEARCH_REPO_SUCCESS:
+    case ActionType.SEARCH_REPO_SUCCESS:
       return { loading: false, error: null, data: action.payload };
-    case SEARCH_REPO_ERROR:
+    case ActionType.SEARCH_REPO_ERROR:
       return { loading: false, error: action.payload, data: [] };
     default:
       return state;
