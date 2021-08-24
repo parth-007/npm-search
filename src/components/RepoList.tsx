@@ -2,7 +2,9 @@ import { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 // import { actionCreators } from '../state';
 import { useActions } from '../hooks/useAction';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
+import { RootState } from '../state/reducers';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 // useSelector same as mapPropsToState (Used in class based component)
 
 const RepoList: React.FC = () => {
@@ -10,7 +12,7 @@ const RepoList: React.FC = () => {
     // const dispatch = useDispatch();
     const { searchRepos } = useActions();
 
-    const {data, erorr, loading} = useSelector((state) => state.repos);
+    const {data, error, loading} = useTypedSelector((state) => state.repos);
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
